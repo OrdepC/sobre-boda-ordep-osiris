@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,407 +7,422 @@
 <title>Ordep & Osiris | Nuestra boda</title>
 
 <style>
-:root {
-  --gold: #bd9b55;
-  --gold-light: #ead7a4;
-  --gold-dark: #86672f;
-  --ivory: #fffdf8;
-  --ink: #655337;
-}
-
-* { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  overflow-x: hidden;
-  font-family: Georgia, "Times New Roman", serif;
-  color: var(--ink);
-  background:
-    radial-gradient(ellipse at 50% 38%, #fffefa 0%, #f8f0df 55%, #e8d8b8 100%);
-}
-
-.page {
-  position: relative;
-  min-height: 100vh;
-  padding: 38px 18px 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  isolation: isolate;
-}
-
-.page::before {
-  content: "";
-  position: absolute;
-  inset: 12px;
-  border: 1px solid #bd9b5570;
-  pointer-events: none;
-  z-index: -1;
-}
-
-.page::after {
-  content: "✧";
-  position: absolute;
-  top: 23px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: var(--gold);
-  font-size: 23px;
-}
-
-.eyebrow {
-  margin: 0 0 8px;
-  color: var(--gold-dark);
-  font-size: 10px;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-}
-
-.heading {
-  margin: 0;
-  font-size: clamp(29px, 6vw, 43px);
-  font-weight: normal;
-  font-style: italic;
-  color: #987b43;
-}
-
-.names {
-  margin: 10px 0 27px;
-  font-size: 12px;
-  letter-spacing: 4px;
-  color: #8e7955;
-}
-
-.ornament {
-  margin: 0 0 22px;
-  color: var(--gold);
-  font-size: 20px;
-  letter-spacing: 8px;
-}
-
-.envelope {
-  position: relative;
-  width: min(84vw, 370px);
-  height: clamp(205px, 57vw, 250px);
-  perspective: 1200px;
-  filter: drop-shadow(0 17px 17px #71582c25);
-  animation: arrive 1.1s ease both;
-}
-
-@keyframes arrive {
-  from { opacity: 0; transform: translateY(18px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.envelope-back {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  border: 1px solid #c5a66a;
-  border-radius: 3px;
-  background: linear-gradient(145deg, #f4e7c9, #d8bd83);
-}
-
-.envelope-back::after {
-  content: "❦";
-  position: absolute;
-  right: 12px;
-  bottom: 5px;
-  color: #a8874c70;
-  font-size: 30px;
-}
-
-.letter {
-  position: absolute;
-  z-index: 2;
-  left: 7%;
-  top: 5%;
-  width: 86%;
-  height: 90%;
-  padding: 20px 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #d8c69f;
-  outline: 1px solid #eee3cb;
-  outline-offset: -6px;
-  background:
-    radial-gradient(ellipse at center, #fffefa, #fbf4e5);
-  transition: transform 1.15s cubic-bezier(.2,.8,.2,1);
-}
-
-.letter::before,
-.letter::after {
-  content: "❦";
-  color: #b69a61;
-  font-size: 17px;
-  position: absolute;
-}
-.letter::before { top: 8px; }
-.letter::after { bottom: 8px; }
-
-.monogram {
-  color: #a18347;
-  font-size: clamp(32px, 9vw, 45px);
-  font-style: italic;
-  line-height: 1.1;
-}
-
-.letter-title {
-  margin: 9px 0 5px;
-  font-size: 11px;
-  letter-spacing: 3px;
-}
-
-.letter-subtitle {
-  margin: 0;
-  font-size: 12px;
-  font-style: italic;
-  color: #9a8357;
-}
-
-.flap {
-  position: absolute;
-  z-index: 5;
-  inset: 0;
-  transform-origin: top center;
-  transform: rotateX(0deg);
-  backface-visibility: visible;
-  transition: transform 850ms ease, z-index 0s 400ms;
-  background: linear-gradient(155deg, #f6e9c9, #d6b778);
-  clip-path: polygon(0 0, 100% 0, 50% 58%);
-  filter: drop-shadow(0 1px 1px #8e7138);
-}
-
-.front-left,
-.front-right,
-.front-bottom {
-  position: absolute;
-  inset: 0;
-  z-index: 4;
-  pointer-events: none;
-}
-
-.front-left {
-  background: linear-gradient(110deg, #e6d09f, #c9aa69);
-  clip-path: polygon(0 0, 51% 51%, 0 100%);
-}
-
-.front-right {
-  background: linear-gradient(250deg, #ead7a8, #c7a666);
-  clip-path: polygon(100% 0, 49% 51%, 100% 100%);
-}
-
-.front-bottom {
-  background: linear-gradient(0deg, #c7a363, #eddbb0);
-  clip-path: polygon(0 100%, 50% 48%, 100% 100%);
-}
-
-.front-bottom::after {
-  content: "❦";
-  position: absolute;
-  left: 50%;
-  bottom: 8px;
-  transform: translateX(-50%);
-  color: #fff7e5b0;
-  font-size: 22px;
-}
-
-.seal {
-  position: absolute;
-  z-index: 7;
-  left: 50%;
-  top: 52%;
-  transform: translate(-50%, -50%);
-  width: 69px;
-  height: 69px;
-  border: 1px solid #f0dca6;
-  border-radius: 50%;
-  color: #fff5d9;
-  font-family: Georgia, serif;
-  font-size: 19px;
-  font-style: italic;
-  cursor: pointer;
-  background:
-    radial-gradient(circle at 32% 25%, #d6b86f, #a77e37 65%, #795523);
-  box-shadow:
-    0 0 0 3px #c5a46470,
-    0 4px 12px #60461f40,
-    inset 0 0 0 2px #f5e4b655;
-  transition: opacity .45s ease, transform .45s ease;
-}
-
-.seal::before {
-  content: "✧";
-  position: absolute;
-  inset: 5px;
-  border: 1px solid #f1dfb36b;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  font-size: 40px;
-  opacity: .45;
-}
-
-.seal span {
-  position: relative;
-  z-index: 1;
-}
-
-.instruction {
-  margin: 27px 0 0;
-  color: #8a734b;
-  font-size: 11px;
-  letter-spacing: 2px;
-  line-height: 1.8;
-  text-transform: uppercase;
-}
-
-.instruction::after {
-  content: "  ✧";
-  color: var(--gold);
-}
-
-.enter {
-  display: inline-block;
-  margin-top: 22px;
-  padding: 15px 28px;
-  min-width: 220px;
-  color: #80632d;
-  border: 1px solid var(--gold);
-  outline: 1px solid #bd9b5545;
-  outline-offset: 4px;
-  background: #fffdf8d9;
-  text-decoration: none;
-  font-size: 11px;
-  letter-spacing: 3px;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transform: translateY(12px);
-  transition: opacity .7s ease, transform .7s ease, background .3s ease;
-}
-
-.enter:hover {
-  background: #ead8ad;
-}
-
-.footer {
-  margin: 30px 0 0;
-  color: #9a855e;
-  font-size: 9px;
-  letter-spacing: 3px;
-}
-
-.sparkle {
-  position: absolute;
-  color: #b99750;
-  pointer-events: none;
-  opacity: 0;
-  animation: twinkle 3s ease-in-out infinite;
-}
-
-.sparkle.one { top: 24%; left: 12%; font-size: 18px; }
-.sparkle.two { top: 33%; right: 11%; font-size: 13px; animation-delay: 1s; }
-.sparkle.three { bottom: 23%; left: 17%; font-size: 12px; animation-delay: 1.6s; }
-.sparkle.four { bottom: 28%; right: 14%; font-size: 19px; animation-delay: .6s; }
-
-@keyframes twinkle {
-  0%, 100% { opacity: 0; transform: scale(.7) rotate(0); }
-  50% { opacity: .8; transform: scale(1.15) rotate(18deg); }
-}
-
-.envelope.open .flap {
-  transform: rotateX(180deg);
-  z-index: 1;
-}
-
-.envelope.open .letter {
-  transform: translateY(-43%);
-}
-
-.envelope.open .seal {
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(.65);
-  pointer-events: none;
-}
-
-.page.opened .enter {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  transform: translateY(0);
-  transition-delay: .7s;
-}
-
-.page.opened .instruction {
-  color: #9b7b3d;
-}
-
-@media (max-width: 420px) {
-  .page { padding-top: 34px; }
-  .names { margin-bottom: 24px; }
-  .envelope { width: 86vw; }
-  .seal { width: 61px; height: 61px; }
-  .sparkle.one { left: 5%; }
-  .sparkle.two { right: 5%; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
-    transition-duration: .01ms !important;
+  * {
+    box-sizing: border-box;
   }
-}
+
+  html, body {
+    margin: 0;
+    min-height: 100%;
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 20px;
+    background:
+      radial-gradient(ellipse at center, #fffdf7 0%, #f5eddf 70%, #e9dcc5 100%);
+    color: #443827;
+    font-family: Georgia, "Times New Roman", serif;
+  }
+
+  .page {
+    position: relative;
+    width: 100%;
+    max-width: 560px;
+    min-height: 650px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 35px 20px;
+    overflow: hidden;
+    border: 1px solid #c6a45b;
+    outline: 1px solid rgba(198, 164, 91, 0.4);
+    outline-offset: -8px;
+    background: rgba(255, 253, 247, 0.7);
+    box-shadow: 0 12px 45px rgba(91, 69, 35, 0.12);
+    text-align: center;
+    transition: opacity 0.7s ease;
+  }
+
+  .page::before,
+  .page::after {
+    content: "✦";
+    position: absolute;
+    color: #c6a45b;
+    font-size: 18px;
+  }
+
+  .page::before {
+    top: 24px;
+    left: 28px;
+  }
+
+  .page::after {
+    right: 28px;
+    bottom: 24px;
+  }
+
+  .eyebrow {
+    margin: 0 0 12px;
+    color: #a78643;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+
+  .heading {
+    margin: 0;
+    font-size: clamp(25px, 6vw, 34px);
+    font-weight: normal;
+    letter-spacing: 2px;
+  }
+
+  .ornament {
+    margin: 14px 0 20px;
+    color: #b99a56;
+    font-size: 20px;
+    letter-spacing: 7px;
+  }
+
+  .names {
+    margin: 0 0 10px;
+    color: #a78643;
+    font-size: clamp(31px, 8vw, 45px);
+    font-weight: normal;
+    font-style: italic;
+  }
+
+  .subtitle {
+    margin: 0 0 24px;
+    color: #74634a;
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+
+  .envelope-wrap {
+    position: relative;
+    width: min(310px, 82vw);
+    height: 205px;
+    margin: 12px auto 22px;
+    perspective: 1000px;
+  }
+
+  .envelope {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+  }
+
+  .envelope-back {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border: 1px solid #c5a766;
+    border-radius: 4px;
+    background: linear-gradient(145deg, #f0e2c5, #e3cfaa);
+    box-shadow: 0 10px 22px rgba(90, 65, 28, 0.16);
+  }
+
+  .letter {
+    position: absolute;
+    z-index: 2;
+    left: 7%;
+    top: 7%;
+    width: 86%;
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    border: 1px solid #e0cfaa;
+    background: #fffdf8;
+    color: #9d7a38;
+    transform: translateY(0);
+    transition: transform 0.85s ease, box-shadow 0.85s ease;
+  }
+
+  .letter-small {
+    margin: 0 0 10px;
+    font-size: 10px;
+    letter-spacing: 3px;
+  }
+
+  .letter-names {
+    margin: 0;
+    font-size: clamp(25px, 6vw, 32px);
+    font-style: italic;
+    font-weight: normal;
+  }
+
+  .letter-date {
+    margin: 10px 0 0;
+    color: #79684e;
+    font-size: 11px;
+    letter-spacing: 2px;
+  }
+
+  .front-left,
+  .front-right,
+  .front-bottom {
+    position: absolute;
+    z-index: 4;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .front-left {
+    background: linear-gradient(45deg, #e8d6b4, #f7edda);
+    clip-path: polygon(0 0, 51% 52%, 0 100%);
+    border-radius: 4px;
+  }
+
+  .front-right {
+    background: linear-gradient(315deg, #e4d0a9, #f5e8d0);
+    clip-path: polygon(100% 0, 49% 52%, 100% 100%);
+    border-radius: 4px;
+  }
+
+  .front-bottom {
+    background: linear-gradient(0deg, #dfc99e, #f1e2c4);
+    clip-path: polygon(0 100%, 50% 46%, 100% 100%);
+    border-radius: 4px;
+  }
+
+  .flap {
+    position: absolute;
+    z-index: 5;
+    inset: 0 0 auto;
+    height: 58%;
+    background: linear-gradient(180deg, #f5e9d2, #e6d2ac);
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    transform-origin: top center;
+    transition: transform 0.8s ease, opacity 0.45s ease;
+    backface-visibility: hidden;
+  }
+
+  .seal {
+    position: absolute;
+    z-index: 8;
+    left: 50%;
+    top: 51%;
+    width: 53px;
+    height: 53px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-50%, -50%);
+    border: 2px solid #f4df9d;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 25%, #d9bd72, #a47b30 75%);
+    box-shadow: 0 3px 8px rgba(87, 59, 20, 0.25);
+    color: #fff7df;
+    font-size: 17px;
+    cursor: pointer;
+    transition: opacity 0.4s ease, transform 0.3s ease;
+  }
+
+  .seal:hover {
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+
+  .envelope.open .flap {
+    transform: rotateX(180deg);
+    z-index: 0;
+  }
+
+  .envelope.open .letter {
+    transform: translateY(-43%);
+    box-shadow: 0 5px 15px rgba(90, 65, 28, 0.12);
+    transition-delay: 0.2s;
+  }
+
+  .envelope.open .seal {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .instruction {
+    min-height: 20px;
+    margin: 0 0 16px;
+    color: #79684e;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    transition: opacity 0.5s ease;
+  }
+
+  .enter {
+    display: inline-block;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    padding: 14px 28px;
+    border: 1px solid #b7954c;
+    background: linear-gradient(135deg, #d7bc76, #b18b3c);
+    color: #fffdf7;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    box-shadow: 0 5px 14px rgba(125, 91, 32, 0.15);
+    transform: translateY(8px);
+    transition: opacity 0.5s ease, transform 0.5s ease,
+                background 0.3s ease;
+    cursor: pointer;
+  }
+
+  .enter:hover {
+    background: linear-gradient(135deg, #c8a75b, #96702c);
+  }
+
+  .envelope.open ~ .instruction + .enter {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+    transition-delay: 0.45s;
+  }
+
+  .footer {
+    margin: 28px 0 0;
+    color: #9a845d;
+    font-size: 9px;
+    letter-spacing: 2px;
+    transition: opacity 0.5s ease;
+  }
+
+  /* Animación de la carta al entrar a la invitación */
+  @keyframes cartaVolando {
+    0% {
+      transform: translateY(-43%) translateX(0) rotate(0deg) scale(1);
+      opacity: 1;
+    }
+    30% {
+      transform: translateY(-85%) translateX(-8px) rotate(-5deg) scale(1.04);
+      opacity: 1;
+    }
+    65% {
+      transform: translateY(-175%) translateX(15px) rotate(7deg) scale(0.88);
+      opacity: 0.8;
+    }
+    100% {
+      transform: translateY(-290%) translateX(8px) rotate(12deg) scale(0.6);
+      opacity: 0;
+    }
+  }
+
+  .envelope.fly-away .letter {
+    animation: cartaVolando 1.3s cubic-bezier(.35, .05, .8, .35) forwards;
+  }
+
+  .envelope.fly-away .flap,
+  .envelope.fly-away .front-left,
+  .envelope.fly-away .front-right,
+  .envelope.fly-away .front-bottom,
+  .envelope.fly-away .seal {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .page.leaving .eyebrow,
+  .page.leaving .heading,
+  .page.leaving .ornament,
+  .page.leaving .names,
+  .page.leaving .subtitle,
+  .page.leaving .instruction,
+  .page.leaving .enter,
+  .page.leaving .footer {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+
+  @media (max-width: 480px) {
+    body {
+      padding: 10px;
+    }
+
+    .page {
+      min-height: 610px;
+      padding: 28px 14px;
+    }
+
+    .envelope-wrap {
+      height: 180px;
+      margin-top: 8px;
+    }
+
+    .footer {
+      margin-top: 22px;
+      font-size: 8px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 </style>
 </head>
 
 <body>
 <main class="page" id="page">
 
-  <span class="sparkle one">✧</span>
-  <span class="sparkle two">✦</span>
-  <span class="sparkle three">✧</span>
-  <span class="sparkle four">✦</span>
+  <p class="eyebrow">Con amor, para compartir</p>
 
-  <p class="eyebrow">Una historia, un destino</p>
   <h1 class="heading">Nuestra boda</h1>
-  <p class="names">ORDEP &amp; OSIRIS</p>
-  <div class="ornament">— ❦ —</div>
 
-  <div class="envelope" id="envelope">
-    <div class="envelope-back"></div>
+  <div class="ornament">— ✧ —</div>
 
-    <div class="letter">
-      <div class="monogram">O <span style="font-size:.65em">&amp;</span> O</div>
-      <p class="letter-title">ORDEP &amp; OSIRIS</p>
-      <p class="letter-subtitle">Con todo nuestro amor...</p>
+  <p class="names">Ordep &amp; Osiris</p>
+
+  <p class="subtitle">Una historia de amor que queremos celebrar contigo</p>
+
+  <div class="envelope-wrap">
+    <div class="envelope" id="envelope">
+
+      <div class="envelope-back"></div>
+
+      <div class="letter">
+        <p class="letter-small">CON TODO NUESTRO AMOR</p>
+        <h2 class="letter-names">Ordep &amp; Osiris</h2>
+        <p class="letter-date">NUESTRO GRAN DÍA</p>
+      </div>
+
+      <div class="front-left"></div>
+      <div class="front-right"></div>
+      <div class="front-bottom"></div>
+      <div class="flap"></div>
+
+      <button
+        class="seal"
+        id="seal"
+        type="button"
+        aria-label="Abrir el sobre"
+        title="Abrir el sobre">
+        O&amp;O
+      </button>
+
     </div>
-
-    <div class="front-left"></div>
-    <div class="front-right"></div>
-    <div class="front-bottom"></div>
-    <div class="flap"></div>
-
-    <button class="seal" id="seal" type="button" aria-label="Abrir el sobre">
-      <span>O&amp;O</span>
-    </button>
   </div>
 
   <p class="instruction" id="instruction">
-    Toca el sello para descubrir nuestra invitación
+    Toca el sello para abrir nuestra carta
   </p>
 
-  <a class="enter"
-     id="enter"
-     href="https://sites.google.com/view/nuestra-boda-ordep-y-osiris/invitaci%C3%B3n"
-     target="_top"
-     rel="noopener">
-    ABRIR INVITACIÓN &nbsp; ♡
+  <a
+    class="enter"
+    id="enter"
+    href="https://sites.google.com/view/nuestra-boda-ordep-y-osiris/invitaci%C3%B3n"
+    target="_top"
+    rel="noopener">
+    ABRIR INVITACIÓN ♡
   </a>
 
   <p class="footer">NOS ENCANTARÍA CONTAR CONTIGO</p>
@@ -419,12 +434,29 @@ body {
   const envelope = document.getElementById("envelope");
   const page = document.getElementById("page");
   const instruction = document.getElementById("instruction");
+  const enter = document.getElementById("enter");
 
   seal.addEventListener("click", function () {
+    if (envelope.classList.contains("open")) return;
+
     envelope.classList.add("open");
-    page.classList.add("opened");
     instruction.textContent = "Con mucha ilusión, te esperamos";
   });
+
+  enter.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    if (envelope.classList.contains("fly-away")) return;
+
+    envelope.classList.add("fly-away");
+    page.classList.add("leaving");
+
+    setTimeout(function () {
+      window.location.href = enter.href;
+    }, 1350);
+  });
 </script>
+
 </body>
 </html>
+```
