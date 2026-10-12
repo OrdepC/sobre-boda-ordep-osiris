@@ -262,18 +262,28 @@ rel="noopener"
   <p class="footer">NOS ENCANTARÍA CONTAR CONTIGO</p>
 </main>
 
+```html
 <script>
-(function () {
-  const envelope = document.getElementById("envelope");
   const seal = document.getElementById("seal");
+  const envelope = document.getElementById("envelope");
+  const page = document.getElementById("page");
   const instruction = document.getElementById("instruction");
+  const enter = document.getElementById("enter");
 
   seal.addEventListener("click", function () {
     envelope.classList.add("open");
-    instruction.textContent =
-      "Con mucho amor, te invitamos a nuestro gran día";
+    page.classList.add("opened");
+
+    instruction.textContent = "Nuestro gran día comienza aquí";
+
+    enter.style.visibility = "visible";
+    enter.style.opacity = "1";
+    enter.style.transform = "translateY(0)";
+    enter.style.pointerEvents = "auto";
   });
-})();
+</script>
+```
+
 </script>
 </body>
 </html>
