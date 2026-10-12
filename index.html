@@ -3,374 +3,378 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ordep & Osiris | Nuestra boda</title>
+<title>Ordep &amp; Osiris | Nuestra boda</title>
 
 <style>
-  * {
-    box-sizing: border-box;
-  }
+* {
+  box-sizing: border-box;
+}
 
-  html, body {
-    margin: 0;
-    min-height: 100%;
-  }
+html, body {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+}
 
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 15px;
+  background: radial-gradient(ellipse at center, #fffdf7 0%, #f5eddf 70%, #e9dcc5 100%);
+  color: #443827;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.page {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  min-height: 630px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 38px 20px;
+  overflow: hidden;
+  border: 1px solid #c6a45b;
+  outline: 1px solid rgba(198, 164, 91, 0.4);
+  outline-offset: -8px;
+  background: rgba(255, 253, 247, 0.78);
+  box-shadow: 0 12px 45px rgba(91, 69, 35, 0.12);
+  text-align: center;
+}
+
+.page::before,
+.page::after {
+  content: "✦";
+  position: absolute;
+  color: #c6a45b;
+  font-size: 18px;
+  pointer-events: none;
+}
+
+.page::before {
+  top: 24px;
+  left: 28px;
+}
+
+.page::after {
+  right: 28px;
+  bottom: 24px;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: #a78643;
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.heading {
+  margin: 0;
+  font-size: clamp(25px, 6vw, 34px);
+  font-weight: normal;
+  letter-spacing: 2px;
+}
+
+.ornament {
+  margin: 13px 0 18px;
+  color: #b99a56;
+  font-size: 20px;
+  letter-spacing: 7px;
+}
+
+.names {
+  margin: 0 0 10px;
+  color: #a78643;
+  font-size: clamp(31px, 8vw, 45px);
+  font-weight: normal;
+  font-style: italic;
+}
+
+.subtitle {
+  max-width: 350px;
+  margin: 0 0 18px;
+  color: #74634a;
+  font-size: 13px;
+  line-height: 1.7;
+  letter-spacing: 0.5px;
+}
+
+.envelope-wrap {
+  position: relative;
+  width: min(310px, 82vw);
+  height: 205px;
+  margin: 15px auto 22px;
+  perspective: 1000px;
+}
+
+.envelope {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+
+.envelope-back {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border: 1px solid #c5a766;
+  border-radius: 4px;
+  background: linear-gradient(145deg, #f0e2c5, #e3cfaa);
+  box-shadow: 0 10px 22px rgba(90, 65, 28, 0.16);
+}
+
+.letter {
+  position: absolute;
+  z-index: 2;
+  left: 7%;
+  top: 7%;
+  width: 86%;
+  height: 85%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  border: 1px solid #e0cfaa;
+  background: #fffdf8;
+  color: #9d7a38;
+  transform: translateY(0);
+  transition: transform 0.85s ease, box-shadow 0.85s ease;
+}
+
+.letter-small {
+  margin: 0 0 10px;
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+.letter-names {
+  margin: 0;
+  font-size: clamp(25px, 6vw, 32px);
+  font-style: italic;
+  font-weight: normal;
+}
+
+.letter-date {
+  margin: 10px 0 0;
+  color: #79684e;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.front-left,
+.front-right,
+.front-bottom {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.front-left {
+  background: linear-gradient(45deg, #e8d6b4, #f7edda);
+  clip-path: polygon(0 0, 51% 52%, 0 100%);
+  border-radius: 4px;
+}
+
+.front-right {
+  background: linear-gradient(315deg, #e4d0a9, #f5e8d0);
+  clip-path: polygon(100% 0, 49% 52%, 100% 100%);
+  border-radius: 4px;
+}
+
+.front-bottom {
+  background: linear-gradient(0deg, #dfc99e, #f1e2c4);
+  clip-path: polygon(0 100%, 50% 46%, 100% 100%);
+  border-radius: 4px;
+}
+
+.flap {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 5;
+  height: 58%;
+  background: linear-gradient(180deg, #f5e9d2, #e6d2ac);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top center;
+  transition: transform 0.8s ease, opacity 0.45s ease;
+  backface-visibility: hidden;
+}
+
+.seal {
+  position: absolute;
+  z-index: 8;
+  left: 50%;
+  top: 51%;
+  width: 53px;
+  height: 53px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%);
+  border: 2px solid #f4df9d;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 25%, #d9bd72, #a47b30 75%);
+  box-shadow: 0 3px 8px rgba(87, 59, 20, 0.25);
+  color: #fff7df;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  cursor: pointer;
+  transition: opacity 0.4s ease, transform 0.3s ease;
+}
+
+.seal:hover {
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.envelope.open .flap {
+  transform: rotateX(180deg);
+  z-index: 0;
+}
+
+.envelope.open .letter {
+  transform: translateY(-43%);
+  box-shadow: 0 5px 15px rgba(90, 65, 28, 0.12);
+  transition-delay: 0.2s;
+}
+
+.envelope.open .seal {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.instruction {
+  min-height: 20px;
+  margin: 0 0 16px;
+  color: #79684e;
+  font-size: 13px;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+}
+
+.enter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  position: relative;
+  z-index: 20;
+  min-height: 46px;
+  margin: 0 auto;
+  padding: 14px 28px;
+  border: 1px solid #b7954c;
+  background: linear-gradient(135deg, #d7bc76, #b18b3c);
+  color: #fffdf7;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  box-shadow: 0 5px 14px rgba(125, 91, 32, 0.15);
+  transform: translateY(8px);
+  transition: opacity 0.5s ease, transform 0.5s ease,
+              background 0.3s ease;
+  cursor: pointer;
+}
+
+.enter:hover {
+  background: linear-gradient(135deg, #c8a75b, #96702c);
+}
+
+/* JavaScript añade esta clase cuando se abre el sobre */
+.enter.show-button {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.footer {
+  margin: 26px 0 0;
+  color: #9a845d;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+/* La carta sale volando al pulsar el botón */
+@keyframes cartaVolando {
+  0% {
+    transform: translateY(-43%) translateX(0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  30% {
+    transform: translateY(-85%) translateX(-8px) rotate(-5deg) scale(1.04);
+    opacity: 1;
+  }
+  65% {
+    transform: translateY(-175%) translateX(15px) rotate(7deg) scale(0.88);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-290%) translateX(8px) rotate(12deg) scale(0.6);
+    opacity: 0;
+  }
+}
+
+.envelope.fly-away .letter {
+  animation: cartaVolando 1.3s cubic-bezier(.35, .05, .8, .35) forwards;
+}
+
+.envelope.fly-away .flap,
+.envelope.fly-away .front-left,
+.envelope.fly-away .front-right,
+.envelope.fly-away .front-bottom,
+.envelope.fly-away .seal {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.page.leaving .eyebrow,
+.page.leaving .heading,
+.page.leaving .ornament,
+.page.leaving .names,
+.page.leaving .subtitle,
+.page.leaving .instruction,
+.page.leaving .enter,
+.page.leaving .footer {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+@media (max-width: 480px) {
   body {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    padding: 20px;
-    background:
-      radial-gradient(ellipse at center, #fffdf7 0%, #f5eddf 70%, #e9dcc5 100%);
-    color: #443827;
-    font-family: Georgia, "Times New Roman", serif;
+    padding: 10px;
   }
 
   .page {
-    position: relative;
-    width: 100%;
-    max-width: 560px;
-    min-height: 650px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 35px 20px;
-    overflow: hidden;
-    border: 1px solid #c6a45b;
-    outline: 1px solid rgba(198, 164, 91, 0.4);
-    outline-offset: -8px;
-    background: rgba(255, 253, 247, 0.7);
-    box-shadow: 0 12px 45px rgba(91, 69, 35, 0.12);
-    text-align: center;
-    transition: opacity 0.7s ease;
-  }
-
-  .page::before,
-  .page::after {
-    content: "✦";
-    position: absolute;
-    color: #c6a45b;
-    font-size: 18px;
-  }
-
-  .page::before {
-    top: 24px;
-    left: 28px;
-  }
-
-  .page::after {
-    right: 28px;
-    bottom: 24px;
-  }
-
-  .eyebrow {
-    margin: 0 0 12px;
-    color: #a78643;
-    font-size: 11px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-  }
-
-  .heading {
-    margin: 0;
-    font-size: clamp(25px, 6vw, 34px);
-    font-weight: normal;
-    letter-spacing: 2px;
-  }
-
-  .ornament {
-    margin: 14px 0 20px;
-    color: #b99a56;
-    font-size: 20px;
-    letter-spacing: 7px;
-  }
-
-  .names {
-    margin: 0 0 10px;
-    color: #a78643;
-    font-size: clamp(31px, 8vw, 45px);
-    font-weight: normal;
-    font-style: italic;
-  }
-
-  .subtitle {
-    margin: 0 0 24px;
-    color: #74634a;
-    font-size: 13px;
-    letter-spacing: 1px;
+    min-height: 610px;
+    padding: 30px 14px;
   }
 
   .envelope-wrap {
-    position: relative;
-    width: min(310px, 82vw);
-    height: 205px;
-    margin: 12px auto 22px;
-    perspective: 1000px;
+    height: 180px;
+    margin-top: 10px;
   }
-
-  .envelope {
-    position: absolute;
-    inset: 0;
-    transform-style: preserve-3d;
-  }
-
-  .envelope-back {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    border: 1px solid #c5a766;
-    border-radius: 4px;
-    background: linear-gradient(145deg, #f0e2c5, #e3cfaa);
-    box-shadow: 0 10px 22px rgba(90, 65, 28, 0.16);
-  }
-
-  .letter {
-    position: absolute;
-    z-index: 2;
-    left: 7%;
-    top: 7%;
-    width: 86%;
-    height: 85%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
-    border: 1px solid #e0cfaa;
-    background: #fffdf8;
-    color: #9d7a38;
-    transform: translateY(0);
-    transition: transform 0.85s ease, box-shadow 0.85s ease;
-  }
-
-  .letter-small {
-    margin: 0 0 10px;
-    font-size: 10px;
-    letter-spacing: 3px;
-  }
-
-  .letter-names {
-    margin: 0;
-    font-size: clamp(25px, 6vw, 32px);
-    font-style: italic;
-    font-weight: normal;
-  }
-
-  .letter-date {
-    margin: 10px 0 0;
-    color: #79684e;
-    font-size: 11px;
-    letter-spacing: 2px;
-  }
-
-  .front-left,
-  .front-right,
-  .front-bottom {
-    position: absolute;
-    z-index: 4;
-    inset: 0;
-    pointer-events: none;
-  }
-
-  .front-left {
-    background: linear-gradient(45deg, #e8d6b4, #f7edda);
-    clip-path: polygon(0 0, 51% 52%, 0 100%);
-    border-radius: 4px;
-  }
-
-  .front-right {
-    background: linear-gradient(315deg, #e4d0a9, #f5e8d0);
-    clip-path: polygon(100% 0, 49% 52%, 100% 100%);
-    border-radius: 4px;
-  }
-
-  .front-bottom {
-    background: linear-gradient(0deg, #dfc99e, #f1e2c4);
-    clip-path: polygon(0 100%, 50% 46%, 100% 100%);
-    border-radius: 4px;
-  }
-
-  .flap {
-    position: absolute;
-    z-index: 5;
-    inset: 0 0 auto;
-    height: 58%;
-    background: linear-gradient(180deg, #f5e9d2, #e6d2ac);
-    clip-path: polygon(0 0, 100% 0, 50% 100%);
-    transform-origin: top center;
-    transition: transform 0.8s ease, opacity 0.45s ease;
-    backface-visibility: hidden;
-  }
-
-  .seal {
-    position: absolute;
-    z-index: 8;
-    left: 50%;
-    top: 51%;
-    width: 53px;
-    height: 53px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transform: translate(-50%, -50%);
-    border: 2px solid #f4df9d;
-    border-radius: 50%;
-    background: radial-gradient(circle at 30% 25%, #d9bd72, #a47b30 75%);
-    box-shadow: 0 3px 8px rgba(87, 59, 20, 0.25);
-    color: #fff7df;
-    font-size: 17px;
-    cursor: pointer;
-    transition: opacity 0.4s ease, transform 0.3s ease;
-  }
-
-  .seal:hover {
-    transform: translate(-50%, -50%) scale(1.08);
-  }
-
-  .envelope.open .flap {
-    transform: rotateX(180deg);
-    z-index: 0;
-  }
-
-  .envelope.open .letter {
-    transform: translateY(-43%);
-    box-shadow: 0 5px 15px rgba(90, 65, 28, 0.12);
-    transition-delay: 0.2s;
-  }
-
-  .envelope.open .seal {
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  .instruction {
-    min-height: 20px;
-    margin: 0 0 16px;
-    color: #79684e;
-    font-size: 13px;
-    letter-spacing: 0.5px;
-    transition: opacity 0.5s ease;
-  }
-
-  .enter {
-    display: inline-block;
-    visibility: hidden;
-    opacity: 0;
-    pointer-events: none;
-    padding: 14px 28px;
-    border: 1px solid #b7954c;
-    background: linear-gradient(135deg, #d7bc76, #b18b3c);
-    color: #fffdf7;
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-decoration: none;
-    box-shadow: 0 5px 14px rgba(125, 91, 32, 0.15);
-    transform: translateY(8px);
-    transition: opacity 0.5s ease, transform 0.5s ease,
-                background 0.3s ease;
-    cursor: pointer;
-  }
-
-  .enter:hover {
-    background: linear-gradient(135deg, #c8a75b, #96702c);
-  }
-
- .enter.show-button {
-    visibility: visible;
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0);
-    transition-delay: 0.45s;
-}
 
   .footer {
-    margin: 28px 0 0;
-    color: #9a845d;
-    font-size: 9px;
-    letter-spacing: 2px;
-    transition: opacity 0.5s ease;
+    margin-top: 22px;
+    font-size: 8px;
   }
-
-  /* Animación de la carta al entrar a la invitación */
-  @keyframes cartaVolando {
-    0% {
-      transform: translateY(-43%) translateX(0) rotate(0deg) scale(1);
-      opacity: 1;
-    }
-    30% {
-      transform: translateY(-85%) translateX(-8px) rotate(-5deg) scale(1.04);
-      opacity: 1;
-    }
-    65% {
-      transform: translateY(-175%) translateX(15px) rotate(7deg) scale(0.88);
-      opacity: 0.8;
-    }
-    100% {
-      transform: translateY(-290%) translateX(8px) rotate(12deg) scale(0.6);
-      opacity: 0;
-    }
-  }
-
-  .envelope.fly-away .letter {
-    animation: cartaVolando 1.3s cubic-bezier(.35, .05, .8, .35) forwards;
-  }
-
-  .envelope.fly-away .flap,
-  .envelope.fly-away .front-left,
-  .envelope.fly-away .front-right,
-  .envelope.fly-away .front-bottom,
-  .envelope.fly-away .seal {
-    opacity: 0;
-    transition: opacity 0.5s ease;
-  }
-
-  .page.leaving .eyebrow,
-  .page.leaving .heading,
-  .page.leaving .ornament,
-  .page.leaving .names,
-  .page.leaving .subtitle,
-  .page.leaving .instruction,
-  .page.leaving .enter,
-  .page.leaving .footer {
-    opacity: 0;
-    transition: opacity 0.6s ease;
-  }
-
-  @media (max-width: 480px) {
-    body {
-      padding: 10px;
-    }
-
-    .page {
-      min-height: 610px;
-      padding: 28px 14px;
-    }
-
-    .envelope-wrap {
-      height: 180px;
-      margin-top: 8px;
-    }
-
-    .footer {
-      margin-top: 22px;
-      font-size: 8px;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-      animation-duration: 0.01ms !important;
-      transition-duration: 0.01ms !important;
-    }
-  }
+}
 </style>
 </head>
 
 <body>
+
 <main class="page" id="page">
 
   <p class="eyebrow">Con amor, para compartir</p>
@@ -381,7 +385,9 @@
 
   <p class="names">Ordep &amp; Osiris</p>
 
-  <p class="subtitle">Una historia de amor que queremos celebrar contigo</p>
+  <p class="subtitle">
+    Una historia de amor que queremos celebrar contigo
+  </p>
 
   <div class="envelope-wrap">
     <div class="envelope" id="envelope">
@@ -403,8 +409,7 @@
         class="seal"
         id="seal"
         type="button"
-        aria-label="Abrir el sobre"
-        title="Abrir el sobre">
+        aria-label="Abrir el sobre">
         O&amp;O
       </button>
 
@@ -429,23 +434,34 @@
 </main>
 
 <script>
+(function () {
   const seal = document.getElementById("seal");
   const envelope = document.getElementById("envelope");
   const page = document.getElementById("page");
   const instruction = document.getElementById("instruction");
   const enter = document.getElementById("enter");
 
+  if (!seal || !envelope || !page || !instruction || !enter) {
+    return;
+  }
+
   seal.addEventListener("click", function () {
-    if (envelope.classList.contains("open")) return;
+    if (envelope.classList.contains("open")) {
+      return;
+    }
 
     envelope.classList.add("open");
+    enter.classList.add("show-button");
+
     instruction.textContent = "Con mucha ilusión, te esperamos";
   });
 
   enter.addEventListener("click", function (event) {
     event.preventDefault();
 
-    if (envelope.classList.contains("fly-away")) return;
+    if (envelope.classList.contains("fly-away")) {
+      return;
+    }
 
     envelope.classList.add("fly-away");
     page.classList.add("leaving");
@@ -454,6 +470,7 @@
       window.location.href = enter.href;
     }, 1350);
   });
+})();
 </script>
 
 </body>
