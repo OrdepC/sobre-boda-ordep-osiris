@@ -49,8 +49,10 @@ body {
   text-align: center;
 }
 
+
 .page::before,
-.page::after {
+.page::after,
+.page .corner {
   content: "✦";
   position: absolute;
   color: #c6a45b;
@@ -68,6 +70,19 @@ body {
   bottom: 24px;
 }
 
+.page .corner {
+  display: block;
+}
+
+.page .corner.top-right {
+  top: 24px;
+  right: 28px;
+}
+
+.page .corner.bottom-left {
+  bottom: 24px;
+  left: 28px;
+}
 .eyebrow {
   margin: 0 0 12px;
   color: #a78643;
