@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ordep & Osiris | Nuestra boda</title>
+<style>
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  background: #fbf8f1;
+  color: #594a35;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.page {
+  min-height: 500px;
+  min-height: 100svh;
+  padding: 30px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.kicker, .footer {
+  font: 10px/1.8 Arial, sans-serif;
+  letter-spacing: 3px;
+  color: #a18042;
+}
+
+.kicker { margin: 0 0 42px; }
+.footer { margin-top: 28px; letter-spacing: 2px; }
+
+.envelope {
+  position: relative;
+  width: min(340px, 82vw);
+  aspect-ratio: 1.55;
+  perspective: 900px;
+  animation: float 3s ease-in-out infinite;
+  filter: drop-shadow(0 12px 12px #76613b20);
+}
+
+.back {
+  position: absolute;
+  inset: 0;
+  background: #e8d8b8;
+  border: 1px solid #c4a15a;
+  border-radius: 2px;
+}
+
+.letter {
+  position: absolute;
+  z-index: 2;
+  left: 7%;
+  width: 86%;
+  height: 85%;
+  bottom: 4%;
+  background: #fffdf8;
+  border: 1px solid #d8bd81;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transform: translateY(0);
+  transition: transform 1s ease .45s;
+}
+
+.small {
+  font: 8px Arial, sans-serif;
+  letter-spacing: 2px;
+  color: #a18042;
+}
+
+.names {
+  font-size: clamp(25px, 7vw, 36px);
+  color: #a18042;
+  white-space: nowrap;
+}
+
+.names i { font-size: .8em; }
+
+.rule {
+  width: 48px;
+  height: 1px;
+  background: #c4a15a;
+}
+
+.message {
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.left, .right, .bottom {
+  position: absolute;
+  inset: 0;
+}
+
+.left {
+  z-index: 3;
+  background: #f0e5ce;
+  clip-path: polygon(0 0, 53% 50%, 0 100%);
+}
+
+.right {
+  z-index: 3;
+  background: #e5d3af;
+  clip-path: polygon(100% 0, 47% 50%, 100% 100%);
+}
+
+.bottom {
+  z-index: 4;
+  background: #f7edd9;
+  clip-path: polygon(0 100%, 50% 43%, 100% 100%);
+}
+
+.flap {
+  position: absolute;
+  z-index: 5;
+  inset: 0 0 auto;
+  height: 58%;
+  background: #e4d0a8;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top center;
+  transition: transform .85s ease;
+}
+
+.seal {
+  position: absolute;
+  z-index: 6;
+  left: 50%;
+  top: 51%;
+  transform: translate(-50%, -50%);
+  width: 58px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 2px solid #e5cf97;
+  outline: 1px solid #ad843c;
+  background: radial-gradient(circle at 30% 25%,
+    #e6cc8a, #b38b40 75%);
+  color: #fff9e9;
+  box-shadow: inset 0 0 0 3px #ffffff25;
+  font: 14px Georgia, serif;
+  cursor: pointer;
+  transition: opacity .3s, transform .3s;
+}
+
+.seal i { font-size: 11px; }
+
+.instruction {
+  max-width: 300px;
+  margin: 32px 0 18px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.enter {
+  display: inline-block;
+  padding: 14px 24px;
+  border: 1px solid #b89349;
+  color: #967438;
+  background: transparent;
+  text-decoration: none;
+  font: 11px Arial, sans-serif;
+  letter-spacing: 2px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity .5s, transform .5s, background .3s;
+  transition-delay: 0s;
+}
+
+.enter:hover { background: #f0e5ce; }
+
+.open .flap {
+  transform: rotateX(180deg);
+}
+
+.open .seal {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(.5);
+}
+
+.open .letter {
+  transform: translateY(-43%);
+}
+
+.open .enter {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition-delay: .8s;
+}
+
+@keyframes float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -7px; }
+}
+
+@media (max-width: 480px) {
+  .page { padding: 25px 12px; }
+  .kicker { margin-bottom: 32px; letter-spacing: 2px; }
+  .instruction { font-size: 13px; margin-top: 28px; }
+  .seal { width: 49px; }
+  .footer { font-size: 9px; letter-spacing: 1px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .envelope { animation: none; }
+  *, *::before, *::after { scroll-behavior: auto !important; }
+}
+</style>
+</head>
+<body>
+<main class="page">
+  <p class="kicker">UNA INVITACIÓN ESPECIAL</p>
+
+  <div class="envelope" id="envelope">
+    <div class="back"></div>
+
+    <div class="letter">
+      <span class="small">CON TODO NUESTRO AMOR</span>
+      <span class="names">Ordep <i>&amp;</i> Osiris</span>
+      <span class="rule"></span>
+      <span class="message">
+        Tenemos algo especial<br>que compartir contigo
+      </span>
+    </div>
+
+    <div class="left"></div>
+    <div class="right"></div>
+    <div class="bottom"></div>
+    <div class="flap"></div>
+
+    <button class="seal" id="seal" type="button"
+      aria-label="Abrir el sobre">O <i>&amp;</i> O</button>
+  </div>
+
+  <p class="instruction" id="instruction">
+    Con cariño, hemos preparado algo para ti
+  </p>
+
+  <a class="enter"
+     id="enter"
+     href="PEGA_AQUI_EL_ENLACE_DE_TU_INVITACION">
+     ABRIR INVITACIÓN ♡
+  </a>
+
+  <p class="footer">NOS ENCANTARÍA CONTAR CONTIGO</p>
+</main>
+
+<script>
+(function () {
+  const envelope = document.getElementById("envelope");
+  const seal = document.getElementById("seal");
+  const instruction = document.getElementById("instruction");
+
+  seal.addEventListener("click", function () {
+    envelope.classList.add("open");
+    instruction.textContent =
+      "Con mucho amor, te invitamos a nuestro gran día";
+  });
+})();
+</script>
+</body>
+</html>
