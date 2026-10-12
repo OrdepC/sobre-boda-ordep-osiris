@@ -251,29 +251,27 @@ body {
     Con cariño, hemos preparado algo para ti
   </p>
 
-  <a class="enter"
-     id="enter"
-     href="https://sites.google.com/view/nuestra-boda-ordep-y-osiris/invitaci%C3%B3n"
-target="_top"
-rel="noopener"
-     ABRIR INVITACIÓN ♡
-  </a>
+```html
+<a class="enter"
+   id="enter"
+   href="https://sites.google.com/view/nuestra-boda-ordep-y-osiris/invitaci%C3%B3n"
+   target="_top"
+   rel="noopener">
+  ABRIR INVITACIÓN ♡
+</a>
 
-  <p class="footer">NOS ENCANTARÍA CONTAR CONTIGO</p>
+<p class="footer">NOS ENCANTARÍA CONTAR CONTIGO</p>
+
 </main>
 
-```html
 <script>
   const seal = document.getElementById("seal");
   const envelope = document.getElementById("envelope");
-  const page = document.getElementById("page");
   const instruction = document.getElementById("instruction");
   const enter = document.getElementById("enter");
 
   seal.addEventListener("click", function () {
     envelope.classList.add("open");
-    page.classList.add("opened");
-
     instruction.textContent = "Nuestro gran día comienza aquí";
 
     enter.style.visibility = "visible";
@@ -282,8 +280,8 @@ rel="noopener"
     enter.style.pointerEvents = "auto";
   });
 </script>
-```
-
-</script>
 </body>
 </html>
+```
+
+````
